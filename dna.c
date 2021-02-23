@@ -18,6 +18,25 @@ int main() {
   scanf("%s", dna_file);
   // printf("%s", dna_file);
 
+  FILE* file = fopen(db_file, "r");
+  int num_of_str;
+  char line[400];
+
+  fscanf(file, "%d", &num_of_str);
+  printf("%d\n", num_of_str);
+
+  fscanf(file, "%s", line);
+  printf("%s\n", line);
+
+  while(fscanf(file, "%s", line) != EOF) {
+    printf("%s\n", line);
+  }
+
+
+
+
+
+
 
   // FILE* file = fopen("dna/databases/small.csv", "r");
   // int num_of_str;
@@ -32,11 +51,6 @@ int main() {
   //   char* dna_seq = strtok(NULL, ",");
   //   printf("%s %s\n\n", name, dna_seq);
   //
-  //
-  //   while() {
-  //
-  //   }
-  // }
 
 
 
