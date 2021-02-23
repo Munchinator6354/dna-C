@@ -1,0 +1,2 @@
+# dna-C
+This program will read multiple files and given a sequence of sample DNA, it will determine which person in the database the DNA sequence belongs to by comparing the Short Tandem Repeats (STRs) in the DNA sequence to the databases logged patient profiles.
