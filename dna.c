@@ -32,7 +32,7 @@ void print_array_string(char* arr[], int len) {
 }
 //______________________________________________________________________________
 
-// Reads a database file in from the user.
+// Reads a database file and dna file in from the user.
 char* file_prompts(char* file1, char* file2) {
   printf("Databasefile: ");
   scanf("%s", file1);
@@ -40,6 +40,7 @@ char* file_prompts(char* file1, char* file2) {
   scanf("%s", file2);
 }
 
+// Reads a file.
 FILE* read_file(char* file_name) {
   FILE* file = fopen(file_name, "r");
 }
@@ -55,21 +56,27 @@ int grab_header(FILE* file, int num_of_str, char* line, char* next, char* str) {
   next = strtok(line, ",");
   printf("%s ", next);
 
-  char* str_arr = (char*) calloc(num_of_str * sizeof(char[10]))
 
-  // Grabs the STR's individually.
-  str = strtok(NULL, ",");
-  while(str != NULL) {
-    printf("%s ", str);
+  // Creates array of strings to store STR's
+  char** str_arr = (char**) malloc(num_of_str * sizeof(char*));
+
+  // Grabs the STR's individually and puts them into an array.
+  for(int i = 0; i < num_of_str; i++) {
     str = strtok(NULL, ",");
+    str_arr[i] = (char*) malloc((strlen(str) + 1) * sizeof(char));
+    str_arr[i] = str;
   }
+
+  print_array_string(str_arr, num_of_str);
   printf("\n");
 
   return num_of_str;
 }
 
 
+
   // dna/databases/small.csv
+  // dna/databases/large.csv
 int main() {
 
   // Reads a db_file and dna_file from the user.
@@ -85,12 +92,34 @@ int main() {
   // spaces instead of commas.
   char line[400];
   char* next;
-  char str[10];
+  char str[5];
   int num_of_str = grab_header(file, num_of_str, line, next, str);
 
-  // char* arr_of_strs[20];
+  // Reads in data from the dna file given by the user.
+  FILE* file2 = read_file(dna_file);
 
-  // put_strs_in_array();
+  // Grabs the dna sequence from it's file.
+  // USE TO TEST: dna/sequences/17.txt
+  char* dna_line[6000];
+  while(fscanf(file2, "%s", dna_line) != EOF) {
+    printf("%s", dna_line);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
