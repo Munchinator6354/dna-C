@@ -45,7 +45,7 @@ FILE* read_file(char* file_name) {
   FILE* file = fopen(file_name, "r");
 }
 
-char** grab_header(FILE* file, int *num_of_str, char* line) {
+char** grab_header(FILE* file, int* num_of_str, char* line) {
   // Grabs the number of STR's.
   fscanf(file, "%d", num_of_str);
   // printf("DEBUG # of STR %d\n", num_of_str);
@@ -74,9 +74,8 @@ char** grab_header(FILE* file, int *num_of_str, char* line) {
   return str_arr;
 }
 
-int* count_str_occurences(char* substring, char* string, int num_of_str) {
-  int* count = (int*) calloc(num_of_str, sizeof(int*));
-  // int count = 0;
+int count_str_occurences(char* substring, char* string) {
+  int count = 0;
   if (substring != NULL && string != NULL) {
     int len_string = strlen(string);
     int len_substring = strlen(substring);
@@ -84,7 +83,7 @@ int* count_str_occurences(char* substring, char* string, int num_of_str) {
     if(len_string > 0 && len_substring > 0) {
       for(int i = 0; i < len_string; i++) {
         if(0 == strncmp(substring, string + i, len_substring)) {
-          count[i]++;
+          count++;
         }
       }
     }
@@ -110,30 +109,37 @@ int main() {
   // subsequent. Returns the number of str's and breaks apart the header with
   // spaces instead of commas.
   char line[400];
-
-  // char str[15];
   int num_of_str = 0;
   char** str_arr = grab_header(file, &num_of_str, line);
 
   // TESTS TO SEE IF ARRAY IS RETURNED AND WILL PRINT
-  print_array_string(str_arr, 3);
+  print_array_string(str_arr, num_of_str);
 
   // Reads in data from the dna file given by the user.
   // USE TO TEST: dna/sequences/17.txt
   FILE* file2 = read_file(dna_file);
 
   // Grabs the dna sequence from it's file.
-  char* dna_line[6500];
-  while(fscanf(file2, "%s", dna_line) != EOF) {
-    printf("%s", dna_line);
-  }
+  char dna_line[6500];
+  fscanf(file2, "%s", dna_line);
+  printf("%s", dna_line);
+
 
 
   printf("DEBUG: %d", num_of_str);
-  // START BACK CODING HERE: ON STEP 5 OF IMPLEMENTATION GUIDE.
+
+  // Creates a space to store the occurences of str's in the dna sequence.
+  int occurences[num_of_str];
+
+  // Loops through a DNA sequence and returns the amount of times an str is in
+  // the sequence.
   for(int i = 0; i < num_of_str; i++) {
-    int* occurences[] = count_str_occurences(str_arr[i], dna_line, &num_of_str);
+    occurences[i] = count_str_occurences(str_arr[i], dna_line);
   }
+
+  printf("\nDEBUG Occur1: %d\n", occurences[0]);
+  printf("DEBUG Occur2: %d\n", occurences[1]);
+  printf("DEBUG Occur3: %d\n", occurences[2]);
 
 
 
