@@ -5,7 +5,7 @@ This program will read multiple files and given a sequence of sample DNA, it wil
 
 ## How To Run It?
 1) Clone the repository and place it in the file of your choice.
-2) Navigate to your favorite IDE and open up the file to the dna.c file.
+2) Navigate to your favorite IDE and open up the dna.c file.
 3) Run the code in your editor.
 4) Follow the examples below to get output based on the correct file choice.
 <img src="dnaReadMe/dnaExample1.png" width="300" height="80"/>
