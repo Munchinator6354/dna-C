@@ -1,7 +1,7 @@
 # dna-C - Who's DNA is it?
 
 ## Introduction
-This program will read multiple files and given a sequence of sample DNA, it will determine which person in the database the DNA sequence belongs to by comparing the Short Tandem Repeats (STRs) in the DNA sequence to the databases logged patient profiles.
+This program will read multiple files and given a file with a sequence of sample DNA, it will determine which person in the predetermined database the DNA sequence belongs to by comparing the Short Tandem Repeats (STRs) in the DNA sequence to the databases logged patient profiles.
 
 ## How To Run It?
 1) Clone the repository and place it in the file of your choice.
